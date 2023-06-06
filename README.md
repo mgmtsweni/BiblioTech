@@ -1,3 +1,3 @@
 Authers
-Dintwa Thabiso
+Dintwe Thabiso
 Mtsweni Gift
