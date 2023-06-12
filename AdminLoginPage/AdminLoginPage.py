@@ -19,7 +19,7 @@ canvas = Canvas(
     relief = "ridge")
 canvas.place(x = 0, y = 0)
 
-entry0_img = PhotoImage(file = f"img_textBox0.png")
+entry0_img = PhotoImage(file="img_textBox0.png")
 entry0_bg = canvas.create_image(
     -989.0, -193.5,
     image = entry0_img)
@@ -40,7 +40,7 @@ canvas.create_text(
     fill = "#ffffff",
     font = ("None", int(25.0)))
 
-entry1_img = PhotoImage(file = f"img_textBox1.png")
+entry1_img = PhotoImage(file="img_textBox1.png")
 entry1_bg = canvas.create_image(
     -989.0, -47.5,
     image = entry1_img)

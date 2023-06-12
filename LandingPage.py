@@ -19,7 +19,7 @@ canvas = Canvas(
     relief = "ridge")
 canvas.place(x = 0, y = 0)
 
-img0 = PhotoImage(file = f"img0.png")
+img0 = PhotoImage(file="img0.png")
 b0 = Button(
     image = img0,
     borderwidth = 0,
@@ -32,7 +32,7 @@ b0.place(
     width = 356,
     height = 84)
 
-img1 = PhotoImage(file = f"img1.png")
+img1 = PhotoImage(file="img1.png")
 b1 = Button(
     image = img1,
     borderwidth = 0,

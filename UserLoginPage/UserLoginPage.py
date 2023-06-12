@@ -21,7 +21,7 @@ canvas.place(x = 0, y = 0)
 
 canvas.create_text(
     -1081.0, -321.0,
-    text = "Don’t have an account yet? ",
+    text = "Donï¿½t have an account yet? ",
     fill = "#ffffff",
     font = ("Inter-Bold", int(23.0)))
 
@@ -43,7 +43,7 @@ canvas.create_text(
     fill = "#ffffff",
     font = ("None", int(21.0)))
 
-entry0_img = PhotoImage(file = f"img_textBox0.png")
+entry0_img = PhotoImage(file="img_textBox0.png")
 entry0_bg = canvas.create_image(
     -1003.5, -173.5,
     image = entry0_img)
@@ -64,7 +64,7 @@ canvas.create_text(
     fill = "#ffffff",
     font = ("None", int(25.0)))
 
-entry1_img = PhotoImage(file = f"img_textBox1.png")
+entry1_img = PhotoImage(file="img_textBox1.png")
 entry1_bg = canvas.create_image(
     -1003.5, -27.5,
     image = entry1_img)
