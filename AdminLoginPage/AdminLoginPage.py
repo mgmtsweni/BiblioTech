@@ -7,21 +7,34 @@ def btn_clicked():
 
 window = Tk()
 
-window.geometry("1524x1024")
+window.geometry("1440x1024")
 window.configure(bg = "#bb86fc")
 canvas = Canvas(
     window,
     bg = "#bb86fc",
     height = 1024,
-    width = 1524,
+    width = 1440,
     bd = 0,
     highlightthickness = 0,
     relief = "ridge")
 canvas.place(x = 0, y = 0)
 
-entry0_img = PhotoImage(file="img_textBox0.png")
+img0 = PhotoImage(file = f"img0.png")
+b0 = Button(
+    image = img0,
+    borderwidth = 0,
+    highlightthickness = 0,
+    command = btn_clicked,
+    relief = "flat")
+
+b0.place(
+    x = 182, y = 674,
+    width = 352,
+    height = 86)
+
+entry0_img = PhotoImage(file = f"img_textBox0.png")
 entry0_bg = canvas.create_image(
-    -989.0, -193.5,
+    364.0, 414.5,
     image = entry0_img)
 
 entry0 = Entry(
@@ -30,19 +43,13 @@ entry0 = Entry(
     highlightthickness = 0)
 
 entry0.place(
-    x = -1210.0, y = -226,
+    x = 143.0, y = 382,
     width = 442.0,
     height = 63)
 
-canvas.create_text(
-    -1148.0, -96.0,
-    text = "Password",
-    fill = "#ffffff",
-    font = ("None", int(25.0)))
-
-entry1_img = PhotoImage(file="img_textBox1.png")
+entry1_img = PhotoImage(file = f"img_textBox1.png")
 entry1_bg = canvas.create_image(
-    -989.0, -47.5,
+    364.0, 560.5,
     image = entry1_img)
 
 entry1 = Entry(
@@ -51,21 +58,14 @@ entry1 = Entry(
     highlightthickness = 0)
 
 entry1.place(
-    x = -1210.0, y = -80,
+    x = 143.0, y = 528,
     width = 442.0,
     height = 63)
 
-canvas.create_text(
-    -1148.0, -249.0,
-    text = "Username",
-    fill = "#ffffff",
-    font = ("None", int(25.0)))
-
-canvas.create_text(
-    -1003.0, -358.0,
-    text = "ADMIN  ",
-    fill = "#000000",
-    font = ("Inter-Bold", int(55.0)))
+background_img = PhotoImage(file = f"background.png")
+background = canvas.create_image(
+    754.5, 512.0,
+    image=background_img)
 
 window.resizable(False, False)
 window.mainloop()
