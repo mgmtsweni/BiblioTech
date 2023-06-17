@@ -32,8 +32,44 @@ def returns():
 
 def userswin():
     adminmainWin.destroy()
-    import userswin
+    import user
 
+def searchbooks():
+    lookup = searchEntry.get()
+    if  lookup == '':
+        messagebox.showerror('Error','Type something')
+    else:
+        availableframe = Frame(adminmainWin, width=650, height=540, bg='navajowhite3')
+        availableframe.place(x=50, y=300)
+        
+
+        scrollbar = Scrollbar(availableframe)
+        scrollbar.grid(row=0, column=1, sticky='ns')
+
+        booklist = Listbox(availableframe,  width=105, height=15, font=('Arial', 15, 'bold'), yscrollcommand=scrollbar.set)
+        booklist.grid(row=0, column=0, padx=8)
+        scrollbar.config(command=booklist.yview)
+        booklist.resizable(0, 0)
+
+        try:
+            connection = sqlite3.connect('database/BiblioBooks.db')
+            cursor = connection.cursor()
+        except Exception:
+            messagebox.showerror('Error', 'Database connection Error')
+
+    cursor.execute("SELECT rowid, * FROM booksdata WHERE title like ?", (lookup,))
+    records = cursor.fetchall()
+
+    #put a control for when we can;t find what we searching for
+    show_record = ''
+    for record in records:
+        show_record += str(record[4]) + '\t' + str(record[0]) + '\t' \
+                + str(record[1]) + '\t' + str(record[2]) + '\n' + '\n'
+    
+    print_list = Label(booklist, text=show_record, font=('bold', 15), fg='mediumpurple1', bg='white')
+    print_list.grid(row=0, column=0, padx=8)
+
+    connection.close()
 
 """oparations"""
 adminmainWin = Tk()
@@ -93,13 +129,19 @@ ReturnButton.place(x=965, y=60)
 
 
 #admin database
-adminsButton = Button(adminmainWin, text='users', bd=0, cursor='hand2',
-                      activebackground='tomato', activeforeground='white',
-                      bg='white', fg="black", font=('Arial', 15, 'bold underline'), command = userswin)
+adminsButton = Button(adminmainWin, text='users', bd=0, cursor='hand2', fg="black",
+                      activebackground='tomato', activeforeground='white', bg='white',
+                      font=('Arial', 15, 'bold underline'), command = userswin)
 adminsButton.place(x=1130, y=60)
 
+searchEntry = Entry(adminmainWin, width=29, bg='white', bd=0, fg='black',
+                     font=('Arial', 20, 'bold'),)
+searchEntry.insert(0, '')
+searchEntry.place(x=452, y=208)
+
 iconButton = Button(adminmainWin, image=searchimage, bd=0, cursor='hand2',
-                   width=50, height=50, activebackground='white', command = home)
+                   width=50, height=50, activebackground='white', command = searchbooks)
 iconButton.place(x=393, y=190)
+
 
 adminmainWin.mainloop()
