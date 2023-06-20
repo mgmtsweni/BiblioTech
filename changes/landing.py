@@ -8,9 +8,8 @@ import re
 """functions"""
 
 def admin():
-    myfile = 'c:/Users/MGM NOTEBOOK/Documents/MGM CODE/Portfolio/admin/test.py'
     adminWindow.destroy()
-    import myfile
+    import adlogin
 
 def user():
     adminWindow.destroy()

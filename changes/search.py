@@ -32,7 +32,7 @@ def returns():
 
 def userswin():
     adminmainWin.destroy()
-    import user
+    import users
 
 def searchbooks():
     lookup = searchEntry.get()

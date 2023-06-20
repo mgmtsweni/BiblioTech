@@ -6,9 +6,9 @@ import re
 
 
 """functions"""
-def land():
-    adminWindow.destroy()
-    import landing
+def home():
+    adminmainWin.destroy()
+    import adhome
 
 def index():
     adminWindow.destroy()
@@ -42,9 +42,7 @@ def login():
         if row is None:
             messagebox.showerror('Error', 'Incorrect credentials')
         else:
-            messagebox.showinfo('Success', 'Login Successful')
-            index()
-
+            home()
     clear()
 
 

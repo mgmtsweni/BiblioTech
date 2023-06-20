@@ -40,7 +40,7 @@ def returns():
 
 def userswin():
     adminmainWin.destroy()
-    import userswin
+    import users
 
 
 def displaybooks():
@@ -124,10 +124,6 @@ adminsButton = Button(adminmainWin, text='users', bd=0, cursor='hand2',
                       activebackground='tomato', activeforeground='white',
                       bg='white', fg="black", font=('Arial', 15, 'bold underline'), command=userswin)
 adminsButton.place(x=1130, y=60)
-
-
-# availableframe = Frame(adminmainWin, width=650, height=540, bg='NavajoWhite3')
-# availableframe.place(x=50, y=163)
 
 """scroll bar"""
 

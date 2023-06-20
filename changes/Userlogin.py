@@ -6,17 +6,14 @@ import re
 
 
 """functions"""
-
 def index():
     adminWindow.destroy()
-    import userReg
+    import ushome
 
-def land():
-    adminWindow.destroy()
-    import landing
 
 def forgot():
-    messagebox.showinfo('Information', 'Contact management')
+    adminWindow.destroy()
+    import passreset
 
 
 def clear():
@@ -42,7 +39,7 @@ def login():
         if row is None:
             messagebox.showerror('Error', 'Incorrect credentials')
         else:
-            messagebox.showinfo('Success', 'Login Successful')
+            #messagebox.showinfo('Success', 'Login Successful')
             index()
 
     clear()
