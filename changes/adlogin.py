@@ -7,12 +7,12 @@ import re
 
 """functions"""
 def home():
-    adminmainWin.destroy()
+    adminWindow.destroy()
     import adhome
 
-def index():
+def land():
     adminWindow.destroy()
-    import adIndex
+    import landing
 
 
 def forgot():
@@ -29,13 +29,13 @@ def login():
         messagebox.showerror('Error', 'Enter Password and username')
     else:
         try:
-            connection = sqlite3.connect('database/BiblioUsers.db')
+            connection = sqlite3.connect('database/BiblioAdmins.db')
             cursor = connection.cursor()
         except Exception:
             messagebox.showerror('Error', 'Database connection Error')
             return
 
-        query = 'SELECT * FROM userdata WHERE username = ? AND password = ?'
+        query = 'SELECT * FROM admindata WHERE username = ? AND password = ?'
         cursor.execute(query, (usernameEntry.get(), passwordEntry.get()))
 
         row = cursor.fetchone()

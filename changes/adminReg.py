@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-import datetime
-import os
 from tkinter import *
 from tkinter import messagebox
 import sqlite3
@@ -38,13 +36,13 @@ def database():
         messagebox.showerror('error:', 'Enter a correct email')
     else:
         try:
-            connection = sqlite3.connect('database/BiblioUsers.db')
+            connection = sqlite3.connect('database/BiblioAdmins.db')
             cursor = connection.cursor()
         except Exception:
             messagebox.showerror('Error','Database connection Error')
 
     try:
-        cursor.execute("""CREATE TABLE IF NOT EXISTS userdata (
+        cursor.execute("""CREATE TABLE IF NOT EXISTS admindata (
             name varchar(50),
             email varchar(50),
             username varchar(50),
@@ -53,12 +51,12 @@ def database():
     except Exception:
         messagebox.showerror('Error','Database creattion Error')
 
-    query = 'SELECT * FROM userdata WHERE username = ? AND email = ?'
+    query = 'SELECT * FROM admindata WHERE username = ? AND email = ?'
     cursor.execute(query,(usernameEntry.get(), userEmail.get()))
 
     row = cursor.fetchone()
     if row is None:
-        cursor.execute('INSERT INTO userdata VALUES (:name, :email, :username, :password)',
+        cursor.execute('INSERT INTO admindata VALUES (:name, :email, :username, :password)',
                 {
                     'name': nameEntry.get(),
                     'email':userEmail.get(),
@@ -70,7 +68,7 @@ def database():
 
     else:
         messagebox.showerror('Error','Data already exist')
-    cursor.execute('SELECT * FROM userdata')
+    cursor.execute('SELECT * FROM admindata')
     myDB = cursor.fetchall()
     print(myDB)
 

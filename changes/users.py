@@ -61,14 +61,15 @@ def employeelist():
 
     show_record = ''
     for record in records:
-        show_record += str(record[4]) + '\t' + str(record[0]) + \
-            '\t' + str(record[1]) + '\t' + str(record[2]) + '\n' + '\n'
+        show_record += ((
+                (f'{str(record[4])}    {str(record[0])}' + '\t')
+                + str(record[1]) + '\t' ) + str(record[2]) + '\n' ) + '\n'
 
     print_list = Label(listframe, text=show_record, font=(
         'Arial Sans', 15, 'bold'), fg='White', bg='orange')
     print_list.place(x=50, y=150)
 
-    text = Label(listframe, text='Enter Employee ID',
+    text = Label(listframe, text='User ID',
                  fg='brown1', font=('bold', 10))
     text.place(x=50, y=480)
     deleteBox = Entry(listframe, width=18, bd=2, fg='black')
@@ -264,8 +265,7 @@ availableframe.place(x=50, y=155)
 scrollbar = Scrollbar(availableframe)
 scrollbar.grid(row=0, column=1, sticky='ns')
 
-
-userlist = Listbox(availableframe,  width=100, height=22, font=(
+userlist = Listbox(availableframe, width=100, height=22, font=(
     'Arial', 15, 'bold'), yscrollcommand=scrollbar.set)
 userlist.grid(row=0, column=0, padx=8)
 scrollbar.config(command=userlist.yview)

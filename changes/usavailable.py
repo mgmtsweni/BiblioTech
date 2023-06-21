@@ -19,11 +19,11 @@ def search():
     import ussearch
 
 def order():
-    messagebox.showinfo('Success', 'oder books')
+    messagebox.showinfo('Success', 'need to add order tab')
 
 def more():
-    messagebox.showinfo('Success', 'more options')
-
+    messagebox.showinfo('Success', 'more options should be a drop down')
+ 
 def profile():
     usermainWin.destroy()
     import usprofile
@@ -56,8 +56,9 @@ usermainWin.resizable(0, 'true')
 usermainWin.title('admin Page')
 
 
-bgimage = PhotoImage(file='img/usermain.png')
+bgimage = PhotoImage(file='img/useravail.png')
 proicon = PhotoImage(file='icon/proIcon.png')
+usericon = PhotoImage(file='icon/user.png')
 logoimage = PhotoImage(file='img/2.png')
 
 #background image
@@ -84,20 +85,19 @@ searchButton.place(x=670, y=85)
 #order
 orderButton = Button(usermainWin, text='Order', bd=0, cursor='hand2',
                       activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'))#, command = order)
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = order)
 orderButton.place(x=820, y=85)
 
 #More - dropdown
 moreButton = Button(usermainWin, text='More', bd=0, cursor='hand2',
                       activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'))#, command = more)
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = more)
 moreButton.place(x=980, y=85)
 
-
-profileButton = Button(usermainWin, text='profile', bd=0, cursor='hand2',
-                      activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'))#, command = more)
-profileButton.place(x=980, y=85)
+profileButton = Button(usermainWin, image=usericon, bd=0, cursor='hand2',
+                      activebackground='tomato', activeforeground='white', width=70, height=70,
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = profile)
+profileButton.place(x=1155, y=60)
 
 
 

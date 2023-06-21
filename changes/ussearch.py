@@ -75,6 +75,7 @@ usermainWin.title('admin Page')
 bgimage = PhotoImage(file='img/search.png')
 logoimage = PhotoImage(file='icon/2.png')
 searchimage = PhotoImage(file='icon/search.png')
+usericon = PhotoImage(file='icon/user.png')
 
 
 #background image
@@ -90,46 +91,43 @@ logolButton.place(x=35, y=55)
 
 #Available Books
 availableButton = Button(usermainWin, text='Available', bd=0, cursor='hand2',
-                         activebackground='mediumpurple1', activeforeground='white',
-                         bg='mediumpurple1', fg="white", font=('Arial', 15, 'bold underline'), command=available)
+                      activebackground='tomato', activeforeground='white',
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command=available)
 availableButton.place(x=490, y=85)
 
 
 #search
 searchButton = Button(usermainWin, text='Search', bd=0, cursor='hand2',
-                      activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = search)
+                         activebackground='mediumpurple1', activeforeground='white',
+                         bg='mediumpurple1', fg="white", font=('Arial', 15, 'bold underline'), command = search)
 searchButton.place(x=670, y=85)
 
 #order
 orderButton = Button(usermainWin, text='Order', bd=0, cursor='hand2',
                       activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'))#, command = order)
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = order)
 orderButton.place(x=820, y=85)
 
 #More - dropdown
 moreButton = Button(usermainWin, text='More', bd=0, cursor='hand2',
                       activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'))#, command = more)
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = more)
 moreButton.place(x=980, y=85)
 
-
-profileButton = Button(usermainWin, text='profile', bd=0, cursor='hand2',
-                      activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'))#, command = more)
-profileButton.place(x=980, y=85)
-
-
+profileButton = Button(usermainWin, image=usericon, bd=0, cursor='hand2',
+                      activebackground='tomato', activeforeground='white', width=70, height=70,
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = profile)
+profileButton.place(x=1155, y=60)
 
 
 searchEntry = Entry(usermainWin, width=29, bg='white', bd=0, fg='black',
                      font=('Arial', 20, 'bold'),)
 searchEntry.insert(0, '')
-searchEntry.place(x=452, y=208)
+searchEntry.place(x=453, y=208)
 
 iconButton = Button(usermainWin, image=searchimage, bd=0, cursor='hand2',
                    width=50, height=50, activebackground='white', command = searchbooks)
-iconButton.place(x=393, y=190)
+iconButton.place(x=399, y=190)
 
 
 usermainWin.mainloop()

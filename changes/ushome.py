@@ -27,7 +27,7 @@ def displaybooks():
 
 def home():
     usermainWin.destroy()
-    import adhome
+    import ushome
 
 def available():
     usermainWin.destroy()
@@ -48,6 +48,25 @@ def profile():
     import usprofile
 
 
+def on_next():
+    slideimg_1.configure(file='books/Happy_Place.png')
+    slideimg_2.configure(file='books/It_Ends_With_us.png')
+    slideimg_3.configure(file='books/It_Starts_With_Us.png')
+    slideimg_4.configure(file='books/Pageboy.png')
+    slideimg_5.configure(file='books/cross_down.png')
+    slideimg_6.configure(file='books/The_Wager.png')
+    back.bind('<Button>', lambda e:on_back())
+
+
+def on_back():
+    slideimg_6.configure(file='books/Happy_Place.png')
+    slideimg_3.configure(file='books/It_Ends_With_us.png')
+    slideimg_5.configure(file='books/It_Starts_With_Us.png')
+    slideimg_4.configure(file='books/Pageboy.png')
+    slideimg_2.configure(file='books/cross_down.png')
+    slideimg_1.configure(file='books/The_Wager.png')
+    front.bind('<Button>', lambda e:on_next())
+
 """oparations"""
 usermainWin = Tk()
 usermainWin.geometry('1280x800+10+10')
@@ -57,6 +76,18 @@ usermainWin.title('BiblioTech')
 bgimage = PhotoImage(file='img/usermain.png')
 proicon = PhotoImage(file='icon/proIcon.png')
 logoimage = PhotoImage(file='img/2.png')
+backicon = PhotoImage(file='icon/back.png')
+fronticon = PhotoImage(file='icon/front.png')
+usericon = PhotoImage(file='icon/user.png')
+
+slideimg_1 = PhotoImage(file='books/cross_down.png')
+slideimg_2 = PhotoImage(file='books/Happy_Place.png')
+slideimg_3 = PhotoImage(file='books/It_Ends_With_us.png')
+slideimg_4 = PhotoImage(file='books/It_Starts_With_Us.png')
+slideimg_5 = PhotoImage(file='books/Pageboy.png')
+slideimg_6 = PhotoImage(file='books/The_Wager.png')
+
+
 
 #background image
 bglabel = Label(usermainWin, image=bgimage)
@@ -67,19 +98,10 @@ logolabel = Button(usermainWin, image=logoimage, bd=0, cursor='hand2',
                    width=250, height=47, activebackground='white', command = home)
 logolabel.place(x=100, y=65)
 
-""" put a pin on this
-#icon framce 
-frame2 = Frame(usermainWin, width=100, height=50, bg='brown')
-frame2.place(x=1140, y=85)
 
-#profile image
-prolabel = Label(frame2, image=proicon)
-prolabel.place(x=0, y=0)"""
-
-#available books
 availableButton = Button(usermainWin, text='Available', bd=0, cursor='hand2',
-                         activebackground='mediumpurple1', activeforeground='white',
-                         bg='mediumpurple1', fg="white", font=('Arial', 15, 'bold underline'), command=available)
+                      activebackground='tomato', activeforeground='white',
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command=available)
 availableButton.place(x=490, y=85)
 
 #search
@@ -91,20 +113,52 @@ searchButton.place(x=670, y=85)
 #order
 orderButton = Button(usermainWin, text='Order', bd=0, cursor='hand2',
                       activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'))#, command = order)
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = order)
 orderButton.place(x=820, y=85)
 
 #More - dropdown
 moreButton = Button(usermainWin, text='More', bd=0, cursor='hand2',
                       activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'))#, command = more)
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = more)
 moreButton.place(x=980, y=85)
 
+profileButton = Button(usermainWin, image=usericon, bd=0, cursor='hand2',
+                      activebackground='tomato', activeforeground='white', width=70, height=70,
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = profile)
+profileButton.place(x=1155, y=60)
 
-profileButton = Button(usermainWin, text='profile', bd=0, cursor='hand2',
-                      activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'))#, command = more)
-profileButton.place(x=980, y=85)
+"""slde show"""
+
+back = Button(usermainWin, image=backicon, bg='white', border=0,
+                activebackground='tomato', activeforeground='white', command=on_back)
+back.place(x=150, y=400)
+#back.bind('<Button>', lambda e:on_next())
+
+front = Button(usermainWin, image=fronticon, bg='white', border=0,
+                activebackground='tomato', activeforeground='white', command=on_next)
+front.place(x=1100, y=400)
+#front.bind('<Button>', lambda e:on_back())
+
+showframe = Frame(usermainWin, width=860, height=200, border=1, bg='white')
+showframe.place(x=220, y=350)
+
+showBox = Label(showframe, width=100, height=155, image=slideimg_1)
+showBox.place(x=10, y=18)
+
+showBox = Label(showframe, width=100, height=155, image=slideimg_2)
+showBox.place(x=160, y=18)
+
+showBox = Label(showframe, width=100, height=155, image=slideimg_3)
+showBox.place(x=310, y=18)
+
+showBox = Label(showframe, width=100, height=155, image=slideimg_4)
+showBox.place(x=460, y=18)
+
+showBox = Label(showframe, width=100, height=155, image=slideimg_5)
+showBox.place(x=620, y=18)
+
+showBox = Label(showframe, width=100, height=155, image=slideimg_6)
+showBox.place(x=770, y=18)
 
 
 usermainWin.mainloop()
