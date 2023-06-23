@@ -109,21 +109,23 @@ adminsButton.place(x=1130, y=60)
 
 """order main screan"""
 refresh = Button(adminmainWin, text='Refresh', bd=0, cursor='hand2',
-                     activebackground='mediumpurple1', activeforeground='white',
-                     bg='mediumpurple1', fg="white", font=('Arial', 15, 'bold'), command=order)
+                 activebackground='mediumpurple1', activeforeground='white',
+                 bg='mediumpurple1', fg="white", font=('Arial', 15, 'bold'), command=order)
 refresh.place(x=50, y=120)
 
 availableframe = Frame(adminmainWin, width=850, height=540, bg='white')
 availableframe.place(x=42, y=225)
 
-text = Label(adminmainWin, text='Book orders', bg='white', fg='mediumpurple1', font=('Arial', 20, 'bold'))
+text = Label(adminmainWin, text='Book orders', bg='white',
+             fg='mediumpurple1', font=('Arial', 20, 'bold'))
 text.place(x=50, y=180)
 
-userlist = Listbox(availableframe, width=100, height=22, bg='white', font=('Arial', 15, 'bold'))
+userlist = Listbox(availableframe, width=100, height=22,
+                   bg='white', font=('Arial', 15, 'bold'))
 userlist.grid(row=2, column=0, padx=5)
 
 try:
-    connection = sqlite3.connect('database/BiblioBooks.db')
+    connection = sqlite3.connect('database/Bibliotech.db')
     cursor = connection.cursor()
 except Exception:
     messagebox.showerror('Error', 'Database connection Error')
@@ -133,11 +135,17 @@ records = cursor.fetchall()
 
 show_record = ''
 for record in records:
-        show_record += str(record[4]) + '\t' + str(record[0]) + '\t' \
-            + str(record[1]) + '\t' + str(record[2]) + '\n' + '\n'
+    show_record += (
+        (
+            (f"{str(record[5])}  {str(record[0])}  {str(record[1])}")
+            + '\t'
+        )
+        + str(record[2]) + '\t' + str(record[3]) + '\t' + str(record[4])
+        + '\n'
+    ) + '\n'
 
 print_list = Label(userlist, text=show_record, font=('bold', 15),
-                    fg='mediumpurple1', bg='white')
+                   fg='mediumpurple1', bg='white')
 print_list.grid(row=0, column=0, padx=8)
 connection.close()
 

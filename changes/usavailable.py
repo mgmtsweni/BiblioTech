@@ -3,7 +3,6 @@ from tkinter import *
 from tkinter import messagebox
 import sqlite3
 import re
-import BiblioBooksdb
 
 """functions"""
 def home():
@@ -21,8 +20,12 @@ def search():
 def order():
     messagebox.showinfo('Success', 'need to add order tab')
 
-def more():
-    messagebox.showinfo('Success', 'more options should be a drop down')
+def more(event):
+    if clicked.get() =='About':
+        usermainWin.destroy()
+        import more
+    else: 
+        messagebox.showinfo('Success', 'services')
  
 def profile():
     usermainWin.destroy()
@@ -31,7 +34,7 @@ def profile():
 
 def displaybooks():
     try:
-        connection = sqlite3.connect('database/BiblioBooks.db')
+        connection = sqlite3.connect('database/Bibliotech.db')
         cursor = connection.cursor()
     except Exception:
         messagebox.showerror('Error', 'Database connection Error')
@@ -41,8 +44,14 @@ def displaybooks():
 
     show_record = ''
     for record in records:
-        show_record += str(record[4]) + '\t' + str(record[0]) + '\t' \
-                    + str(record[1]) + '\t' + str(record[2]) + '\n' + '\n'
+        show_record += (
+            (
+                (f"{str(record[5])}  {str(record[0])}  {str(record[1])}")
+                + '\t'
+            )
+            + str(record[2]) +'\t'+ str(record[3]) + '\t' +str(record[4])
+            + '\n'
+        ) + '\n'
 
     print_list = Label(booklist, text=show_record, font=('bold', 15), fg='mediumpurple1', bg='white')
     print_list.grid(row=0, column=0, padx=8)
@@ -59,16 +68,16 @@ usermainWin.title('admin Page')
 bgimage = PhotoImage(file='img/useravail.png')
 proicon = PhotoImage(file='icon/proIcon.png')
 usericon = PhotoImage(file='icon/user.png')
-logoimage = PhotoImage(file='img/2.png')
+logoimage = PhotoImage(file='icon/3.png')
 
 #background image
 bglabel = Label(usermainWin, image=bgimage)
 bglabel.place(x=0, y=0)
 
 #logo image
-logolabel = Button(usermainWin, image=logoimage, bd=0, cursor='hand2',
-                   width=250, height=47, activebackground='white', command = home)
-logolabel.place(x=100, y=70)
+logolButton = Button(usermainWin, image=logoimage, bd=0, cursor='hand2',
+                   width=500, height=55, activebackground='white', command = home)
+logolButton.place(x=10, y=75)
 
 
 availableButton = Button(usermainWin, text='Available', bd=0, cursor='hand2',
@@ -89,10 +98,11 @@ orderButton = Button(usermainWin, text='Order', bd=0, cursor='hand2',
 orderButton.place(x=820, y=85)
 
 #More - dropdown
-moreButton = Button(usermainWin, text='More', bd=0, cursor='hand2',
-                      activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = more)
-moreButton.place(x=980, y=85)
+clicked = StringVar()
+clicked.set("More")
+moreOption = OptionMenu(usermainWin, clicked, "About", "Services", command=more)
+moreOption.place(x=980, y=85)
+
 
 profileButton = Button(usermainWin, image=usericon, bd=0, cursor='hand2',
                       activebackground='tomato', activeforeground='white', width=70, height=70,

@@ -38,7 +38,7 @@ def database():
         messagebox.showerror('error:', 'Enter a correct email')
     else:
         try:
-            connection = sqlite3.connect('database/BiblioUsers.db')
+            connection = sqlite3.connect('database/Bibliotech.db')
             cursor = connection.cursor()
         except Exception:
             messagebox.showerror('Error','Database connection Error')
@@ -82,10 +82,10 @@ def database():
 """oparations"""
 adminWindow = Tk()
 adminWindow.geometry('1280x800+10+10')
-adminWindow.resizable(0, 0)
+adminWindow.resizable(0, 800)
 adminWindow.title('admin Page')
 
-bgimage = PhotoImage(file='img/regbg.png')
+bgimage = PhotoImage(file='img/usprofile.png')
 
 bglabel = Label(adminWindow, image=bgimage)
 bglabel.place(x=0, y=0)
@@ -94,32 +94,32 @@ bglabel.place(x=0, y=0)
 nameEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
                   font=('Microsoft Yahei UI Light', 13, 'bold'),)
 nameEntry.insert(0, '')
-nameEntry.place(x=810, y=200)
+nameEntry.place(x=50, y=200)
 
 # surname entry
 usernameEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
                      font=('Microsoft Yahei UI Light', 13, 'bold'),)
 usernameEntry.insert(0, '')
-usernameEntry.place(x=810, y=292)
+usernameEntry.place(x=50, y=292)
 
 # email entry
 userEmail = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
                       font=('Microsoft Yahei UI Light', 13, 'bold'),)
 userEmail.insert(0, '')
-userEmail.place(x=810, y=388)
+userEmail.place(x=50, y=388)
 
 
 # create password
 passwordEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
                       font=('Microsoft Yahei UI Light', 13, 'bold'),)
 passwordEntry.insert(0, '')
-passwordEntry.place(x=810, y=480)
+passwordEntry.place(x=50, y=480)
 
 # confirm password
 confirmPassEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
                          font=('Microsoft Yahei UI Light', 13, 'bold'),)
 confirmPassEntry.insert(0, '')
-confirmPassEntry.place(x=810, y=575)
+confirmPassEntry.place(x=50, y=575)
 
 login = Button(adminWindow, text='Login', bd=0, cursor='hand2', height=1, width=5, fg='orange',
                         activebackground='orange', activeforeground='black',
@@ -128,10 +128,6 @@ login.place(x=1035, y=618)
 
 SubmitButton = Button(adminWindow, text='submite', font=('Arial Sans', 20, 'bold'), fg='white', cursor='hand2',
                       bg='brown1', height=1, width=15, activebackground='brown1', activeforeground='white', command=database)
-SubmitButton.place(x=850, y=665)
+SubmitButton.place(x=80, y=665)
 
-
-# userStatuslabel = Label(
-#    adminWindow, text='Employee Rights', bg='blue', font=('bold', 15),)
-# userStatuslabel.place(x=500, y=155)
 adminWindow.mainloop()

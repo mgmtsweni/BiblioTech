@@ -7,7 +7,7 @@ import re
 
 def displaybooks():
     try:
-        connection = sqlite3.connect('database/BiblioBooks.db')
+        connection = sqlite3.connect('database/Bibliotech.db')
         cursor = connection.cursor()
     except Exception:
         messagebox.showerror('Error', 'Database connection Error')
@@ -40,8 +40,13 @@ def search():
 def order():
     messagebox.showinfo('Success', 'oder books')
 
-def more():
-    messagebox.showinfo('Success', 'more options')
+
+def more(event):
+    if clicked.get() =='About':
+        usermainWin.destroy()
+        import more
+    else: 
+        messagebox.showinfo('Success', 'services')
 
 def profile():
     usermainWin.destroy()
@@ -75,7 +80,7 @@ usermainWin.title('BiblioTech')
 
 bgimage = PhotoImage(file='img/usermain.png')
 proicon = PhotoImage(file='icon/proIcon.png')
-logoimage = PhotoImage(file='img/2.png')
+logoimage = PhotoImage(file='icon/3.png')
 backicon = PhotoImage(file='icon/back.png')
 fronticon = PhotoImage(file='icon/front.png')
 usericon = PhotoImage(file='icon/user.png')
@@ -94,9 +99,9 @@ bglabel = Label(usermainWin, image=bgimage)
 bglabel.place(x=0, y=0)
 
 #logo image
-logolabel = Button(usermainWin, image=logoimage, bd=0, cursor='hand2',
-                   width=250, height=47, activebackground='white', command = home)
-logolabel.place(x=100, y=65)
+logolButton = Button(usermainWin, image=logoimage, bd=0, cursor='hand2',
+                   width=500, height=55, activebackground='white', command = home)
+logolButton.place(x=10, y=75)
 
 
 availableButton = Button(usermainWin, text='Available', bd=0, cursor='hand2',
@@ -113,14 +118,16 @@ searchButton.place(x=670, y=85)
 #order
 orderButton = Button(usermainWin, text='Order', bd=0, cursor='hand2',
                       activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = order)
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command =order)
 orderButton.place(x=820, y=85)
 
+
 #More - dropdown
-moreButton = Button(usermainWin, text='More', bd=0, cursor='hand2',
-                      activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = more)
-moreButton.place(x=980, y=85)
+clicked = StringVar()
+clicked.set("More")
+moreOption = OptionMenu(usermainWin, clicked, "About", "Services", command=more)
+moreOption.place(x=980, y=85)
+
 
 profileButton = Button(usermainWin, image=usericon, bd=0, cursor='hand2',
                       activebackground='tomato', activeforeground='white', width=70, height=70,

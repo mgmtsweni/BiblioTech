@@ -10,6 +10,9 @@ def index():
     adminWindow.destroy()
     import ushome
 
+def home():
+    adminWindow.destroy()
+    import landing
 
 def forgot():
     adminWindow.destroy()
@@ -26,7 +29,7 @@ def login():
         messagebox.showerror('Error', 'Enter Password and username')
     else:
         try:
-            connection = sqlite3.connect('database/BiblioUsers.db')
+            connection = sqlite3.connect('database/Bibliotech.db')
             cursor = connection.cursor()
         except Exception:
             messagebox.showerror('Error', 'Database connection Error')
@@ -39,9 +42,7 @@ def login():
         if row is None:
             messagebox.showerror('Error', 'Incorrect credentials')
         else:
-            #messagebox.showinfo('Success', 'Login Successful')
             index()
-
     clear()
 
 def hide():
@@ -54,6 +55,7 @@ def show():
     openeye.config(file='icon/show.png')
     passwordEntry.config(show='')
     eyeButton.config(command=hide)
+
 
 """oparations"""
 adminWindow = Tk()
@@ -70,7 +72,7 @@ bglabel = Label(adminWindow, image=bgimage)
 bglabel.place(x=0, y=0)
 
 logolButton = Button(adminWindow, image=logoimage, bd=0, cursor='hand2',
-                   width=48, height=48, activebackground='white', command = land)
+                   width=48, height=48, activebackground='white', command = home)
 logolButton.place(x=80, y=65)
 
 signUp = Button(adminWindow, text='Sign Up', bd=0, cursor='hand2', height=1, width=6, fg='white',

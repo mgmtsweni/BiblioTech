@@ -6,41 +6,39 @@ import re
 
 
 """functions"""
-
-
-def index():
-    messagebox.showinfo('Success', 'Check your email')
-
+def login():
+    adminWindow.destroy()
+    import ushome
 
 def clear():
     passwordEntry.delete(0, END)
     confirmPassEntry.delete(0, END)
+    usernameEntry.delete(0, END)
 
 
 def edit():
-    if passwordEntry.get() != confirmPassEntry.get():
+    if passwordEntry.get() == '' and confirmPassEntry.get() == '' or \
+        usernameEntry.get() == '' :
+        messagebox.showerror('error:', 'Fills can not be empty')
+    elif passwordEntry.get() != confirmPassEntry.get():
         messagebox.showerror('error:', 'passwords do not match')
     else:
         try:
-            connection = sqlite3.connect('database/BiblioUsers.db')
+            connection = sqlite3.connect('database/Bibliotech.db')
             cursor = connection.cursor()
         except Exception:
             messagebox.showerror('Error', 'Database connection Error')
 
-        record_id = deleteBox.get()
-        cursor.execute("""UPDATE userdata SET password = :password
-                            WHERE oid = :oid""",
-                       {'password': passwordEntry.get(),})
+        cursor.execute("""UPDATE userdata SET password = :password.
+                            WHERE username = :username""",
+                       {
+                        'password': passwordEntry.get(),
+                        'username': usernameEntry.get()
+                       })
         messagebox.showinfo('success', 'succefully updated')
         connection.commit()
         connection.close()
-
-# regular expression for validating an Email
-def check(email):
-    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
-    # and the string into the fullmatch() method
-    return 1 if (re.fullmatch(regex, email)) else 0
-
+        login()
 
 """oparations"""
 adminWindow = Tk()
@@ -49,33 +47,38 @@ adminWindow.resizable(0, 0)
 adminWindow.title('admin Page')
 
 bgimage = PhotoImage(file='img/Newpass.png')
-logoimage = PhotoImage(file='img/2.png')
+logoimage = PhotoImage(file='icon/3.png')
 
 # logo image
 bglabel = Label(adminWindow, image=bgimage)
 bglabel.place(x=0, y=0)
 
-logolabel = Label(adminWindow, image=logoimage)
-logolabel.place(x=965, y=58)
+logolabel = Label(adminWindow, image=logoimage, bd=0, cursor='hand2',
+                   width=500, height=55, activebackground='white')
+logolabel.place(x=820, y=60)
 
+usernameEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
+                         font=('Microsoft Yahei UI Light', 13, 'bold'),)
+usernameEntry.insert(0, '')
+usernameEntry.place(x=85, y=302)
 
 # create password
 passwordEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
                       font=('Microsoft Yahei UI Light', 13, 'bold'),)
 passwordEntry.insert(0, '')
-passwordEntry.place(x=85, y=331)
+passwordEntry.place(x=85, y=413)
 
 # confirm password
 confirmPassEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
                          font=('Microsoft Yahei UI Light', 13, 'bold'),)
 confirmPassEntry.insert(0, '')
-confirmPassEntry.place(x=85, y=425)
+confirmPassEntry.place(x=85, y=528)
 
 
 SubmitButton = Button(adminWindow, text='SUBMIT', font=('Arial', 20, 'bold'),
                       fg='white', cursor='hand2', bg='mediumpurple1', height=1, width=20,
-                      activebackground='mediumpurple1', activeforeground='white', command=login)
-SubmitButton.place(x=80, y=513)
+                      activebackground='mediumpurple1', activeforeground='white', command=edit)
+SubmitButton.place(x=80, y=600)
 
 
 adminWindow.mainloop()

@@ -41,7 +41,6 @@ def searchbooks():
     else:
         availableframe = Frame(adminmainWin, width=650, height=540, bg='navajowhite3')
         availableframe.place(x=50, y=300)
-        
 
         scrollbar = Scrollbar(availableframe)
         scrollbar.grid(row=0, column=1, sticky='ns')
@@ -52,7 +51,7 @@ def searchbooks():
         booklist.resizable(0, 0)
 
         try:
-            connection = sqlite3.connect('database/BiblioBooks.db')
+            connection = sqlite3.connect('database/Bibliotech.db')
             cursor = connection.cursor()
         except Exception:
             messagebox.showerror('Error', 'Database connection Error')
@@ -63,9 +62,15 @@ def searchbooks():
     #put a control for when we can;t find what we searching for
     show_record = ''
     for record in records:
-        show_record += str(record[4]) + '\t' + str(record[0]) + '\t' \
-                + str(record[1]) + '\t' + str(record[2]) + '\n' + '\n'
-    
+        show_record += (
+            (
+                (f"{str(record[5])}  {str(record[0])}  {str(record[1])}")
+                + '\t'
+            )
+            + str(record[2]) +'\t'+ str(record[3]) + '\t' +str(record[4])
+            + '\n'
+        ) + '\n'
+
     print_list = Label(booklist, text=show_record, font=('bold', 15), fg='mediumpurple1', bg='white')
     print_list.grid(row=0, column=0, padx=8)
 
@@ -78,7 +83,7 @@ adminmainWin.resizable(0, 0)
 adminmainWin.title('admin Page')
 
 
-bgimage = PhotoImage(file='img/search.png')
+bgimage = PhotoImage(file='img/adsearch.png')
 logoimage = PhotoImage(file='icon/2.png')
 searchimage = PhotoImage(file='icon/search.png')
 
@@ -134,14 +139,15 @@ adminsButton = Button(adminmainWin, text='users', bd=0, cursor='hand2', fg="blac
                       font=('Arial', 15, 'bold underline'), command = userswin)
 adminsButton.place(x=1130, y=60)
 
-searchEntry = Entry(adminmainWin, width=29, bg='white', bd=0, fg='black',
+
+searchEntry = Entry(adminmainWin, width=32, bg='white', bd=0, fg='black',
                      font=('Arial', 20, 'bold'),)
 searchEntry.insert(0, '')
-searchEntry.place(x=452, y=208)
+searchEntry.place(x=425, y=206)
 
 iconButton = Button(adminmainWin, image=searchimage, bd=0, cursor='hand2',
                    width=50, height=50, activebackground='white', command = searchbooks)
-iconButton.place(x=393, y=190)
+iconButton.place(x=370, y=188)
 
 
 adminmainWin.mainloop()

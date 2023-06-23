@@ -29,7 +29,7 @@ def login():
         messagebox.showerror('Error', 'Enter Password and username')
     else:
         try:
-            connection = sqlite3.connect('database/BiblioAdmins.db')
+            connection = sqlite3.connect('database/Bibliotech.db')
             cursor = connection.cursor()
         except Exception:
             messagebox.showerror('Error', 'Database connection Error')
@@ -43,6 +43,7 @@ def login():
             messagebox.showerror('Error', 'Incorrect credentials')
         else:
             home()
+
     clear()
 
 
@@ -64,14 +65,14 @@ logolButton.place(x=80, y=65)
 
 # username entry
 usernameEntry = Entry(adminWindow, width=35, bg='white', bd=0, fg='orange',
-                      font=('Microsoft Yahei UI Light', 13, 'bold'),)
+                      font=('Microsoft Yahei UI Light', 13, 'bold'))
 usernameEntry.insert(0, '')
 usernameEntry.place(x=146, y=365)
 
 
 # enter password
 passwordEntry = Entry(adminWindow, width=35, bg='white', bd=0, fg='orange',
-                      font=('Microsoft Yahei UI Light', 13, 'bold'),)
+                      font=('Microsoft Yahei UI Light', 13, 'bold'))
 passwordEntry.insert(0, '')
 passwordEntry.place(x=146, y=478)
 

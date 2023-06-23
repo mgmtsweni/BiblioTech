@@ -28,7 +28,6 @@ def check(email):
 
 
 def database():
-
     if nameEntry.get() == '' or userEmail.get() == '' or \
             usernameEntry.get() == '' or passwordEntry.get() == '' or confirmPassEntry.get() == '':
         messagebox.showerror('error:', 'all field are required')
@@ -38,7 +37,7 @@ def database():
         messagebox.showerror('error:', 'Enter a correct email')
     else:
         try:
-            connection = sqlite3.connect('database/BiblioUsers.db')
+            connection = sqlite3.connect('database/Bibliotech.db')
             cursor = connection.cursor()
         except Exception:
             messagebox.showerror('Error','Database connection Error')
@@ -83,7 +82,7 @@ def database():
 adminWindow = Tk()
 adminWindow.geometry('1280x800+10+10')
 adminWindow.resizable(0, 0)
-adminWindow.title('admin Page')
+adminWindow.title('Register')
 
 bgimage = PhotoImage(file='img/regbg.png')
 

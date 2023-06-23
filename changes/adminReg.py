@@ -26,17 +26,14 @@ def check(email):
 
 
 def database():
-
     if nameEntry.get() == '' or userEmail.get() == '' or \
             usernameEntry.get() == '' or passwordEntry.get() == '' or confirmPassEntry.get() == '':
         messagebox.showerror('error:', 'all field are required')
     elif  passwordEntry.get() != confirmPassEntry.get():
         messagebox.showerror('error:', 'passwords do not match')
-    elif check(userEmail.get()) == 0:
-        messagebox.showerror('error:', 'Enter a correct email')
     else:
         try:
-            connection = sqlite3.connect('database/BiblioAdmins.db')
+            connection = sqlite3.connect('database/Bibliotech.db')
             cursor = connection.cursor()
         except Exception:
             messagebox.showerror('Error','Database connection Error')
@@ -83,7 +80,7 @@ adminWindow.geometry('1280x800+10+10')
 adminWindow.resizable(0, 0)
 adminWindow.title('admin Page')
 
-bgimage = PhotoImage(file='img/regbg.png')
+bgimage = PhotoImage(file='img/adreg.png')
 
 bglabel = Label(adminWindow, image=bgimage)
 bglabel.place(x=0, y=0)
@@ -118,11 +115,6 @@ confirmPassEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
                          font=('Microsoft Yahei UI Light', 13, 'bold'),)
 confirmPassEntry.insert(0, '')
 confirmPassEntry.place(x=810, y=575)
-
-login = Button(adminWindow, text='Login', bd=0, cursor='hand2', height=1, width=5, fg='orange',
-                        activebackground='orange', activeforeground='black',
-                        bg='white', font=('Arial Sans', 10, 'bold'), command = index)
-login.place(x=1035, y=618)
 
 SubmitButton = Button(adminWindow, text='submite', font=('Arial Sans', 20, 'bold'), fg='white', cursor='hand2',
                       bg='brown1', height=1, width=15, activebackground='brown1', activeforeground='white', command=database)
