@@ -34,7 +34,7 @@ def order():
 
 def returns():
     adminmainWin.destroy()
-    import returns
+    import adreturn
 
 
 def userswin():
@@ -46,7 +46,7 @@ def userswin():
 adminmainWin = Tk()
 adminmainWin.geometry('1280x800+10+10')
 adminmainWin.resizable(0, 0)
-adminmainWin.title('admin Page')
+adminmainWin.title('BiblioTech')
 
 
 bgimage = PhotoImage(file='img/admain.png')
@@ -63,7 +63,7 @@ logolButton = Button(adminmainWin, image=logoimage, bd=0, cursor='hand2',
                    width=210, height=47, activebackground='white', command = home)
 logolButton.place(x=35, y=55)
 
-
+""" Header Tab"""
 availableButton = Button(adminmainWin, text='Available', bd=0, cursor='hand2',
                       activebackground='tomato', activeforeground='white',
                       bg='white', fg="black", font=('Arial', 15, 'bold underline'), command=available)

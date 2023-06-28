@@ -18,7 +18,7 @@ def search():
     import ussearch
 
 def order():
-    messagebox.showinfo('Success', 'need to add order tab')
+    import ussearch
 
 def more(event):
     if clicked.get() =='About':

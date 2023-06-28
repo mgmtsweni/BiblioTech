@@ -44,7 +44,7 @@ def edit():
 adminWindow = Tk()
 adminWindow.geometry('1280x800+10+10')
 adminWindow.resizable(0, 0)
-adminWindow.title('admin Page')
+adminWindow.title('Reset Password')
 
 bgimage = PhotoImage(file='img/Newpass.png')
 logoimage = PhotoImage(file='icon/3.png')

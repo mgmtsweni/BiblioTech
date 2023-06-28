@@ -19,11 +19,6 @@ def forgot():
     import passreset
 
 
-def clear():
-    usernameEntry.delete(0, END)
-    passwordEntry.delete(0, END)
-
-
 def login():
     if usernameEntry.get() == '' or passwordEntry.get() == '':
         messagebox.showerror('Error', 'Enter Password and username')
@@ -43,10 +38,10 @@ def login():
             messagebox.showerror('Error', 'Incorrect credentials')
         else:
             index()
-    clear()
+
 
 def hide():
-    openeye.config(file='icon/hide.png')
+    openeye.config(file='icon/show.png')
     passwordEntry.config(show='*')
     eyeButton.config(command=show)
 

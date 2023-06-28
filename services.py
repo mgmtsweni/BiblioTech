@@ -37,8 +37,8 @@ bglabel.place(x=0, y=0)
 
 #logo image
 logolButton = Button(usermainWin, image=logoimage, bd=0, cursor='hand2',
-                   width=440, height=55, activebackground='white', command = home)
-logolButton.place(x=735, y=505)
+                   width=410, height=55, activebackground='white', command = home)
+logolButton.place(x=709, y=70)
 
 
 profileButton = Button(usermainWin, image=usericon, bd=0, cursor='hand2',

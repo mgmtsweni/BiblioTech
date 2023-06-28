@@ -19,11 +19,6 @@ def forgot():
     messagebox.showinfo('Information', 'Contact management')
 
 
-def clear():
-    usernameEntry.delete(0, END)
-    passwordEntry.delete(0, END)
-
-
 def login():
     if usernameEntry.get() == '' or passwordEntry.get() == '':
         messagebox.showerror('Error', 'Enter Password and username')
@@ -44,14 +39,12 @@ def login():
         else:
             home()
 
-    clear()
-
 
 """oparations"""
 adminWindow = Tk()
 adminWindow.geometry('1280x800+10+10')
 adminWindow.resizable(0, 0)
-adminWindow.title('admin Login')
+adminWindow.title('Admin Page')
 
 bgimage = PhotoImage(file='img/adLogin.png')
 logoimage = PhotoImage(file='icon/left-arrow.png')

@@ -65,8 +65,6 @@ def database():
                     'password':passwordEntry.get()
                 })
         messagebox.showinfo('Success','User Registered Successful')
-
-
     else:
         messagebox.showerror('Error','Data already exist')
     cursor.execute('SELECT * FROM userdata')

@@ -7,8 +7,6 @@ import re
 
 
 """functions"""
-
-
 def home():
     adminmainWin.destroy()
     import adhome
@@ -36,19 +34,37 @@ def order():
 
 def returns():
     adminmainWin.destroy()
-    import returns
+    import adreturn
 
 
 def userswin():
     adminmainWin.destroy()
     import users
 
+def clearbook():
+    if selectBox.get() == '':
+        messagebox.showerror('Error', 'Enter a value')
+    else:
+        try:
+            connection = sqlite3.connect('database/Bibliotech.db')
+            cursor = connection.cursor()
+        except Exception:
+            messagebox.showerror('Error', 'Database connection Error')
+    
+        try:
+            cursor.execute(f"DELETE FROM bookorder WHERE booknumber= {selectBox.get()}")
+            selectBox.delete(0, END)
+            messagebox.showinfo('Success', 'Checked out Successfully')
+        except Exception:
+            messagebox.showerror('Error', 'Database connection Error')
+    connection.commit()
+    connection.close()
 
 """oparations"""
 adminmainWin = Tk()
 adminmainWin.geometry('1280x800+10+10')
 adminmainWin.resizable(0, 0)
-adminmainWin.title('admin Page')
+adminmainWin.title('Admin Page')
 
 
 bgimage = PhotoImage(file='img/order.png')
@@ -130,7 +146,7 @@ try:
 except Exception:
     messagebox.showerror('Error', 'Database connection Error')
 
-cursor.execute('SELECT *, oid FROM booksdata')
+cursor.execute('SELECT *, oid FROM bookorder')
 records = cursor.fetchall()
 
 show_record = ''
@@ -148,5 +164,17 @@ print_list = Label(userlist, text=show_record, font=('bold', 15),
                    fg='mediumpurple1', bg='white')
 print_list.grid(row=0, column=0, padx=8)
 connection.close()
+
+text = Label(userlist, text='Enter Book ID', fg='mediumpurple1',
+             bg='white', font=('Arial', 12, 'bold'))
+text.grid(row=1, column=0, padx=8)
+
+selectBox = Entry(userlist, width=25, bd=2, fg='black')
+selectBox.grid(row=2, column=0, padx=8)
+
+refresh = Button(userlist, text='Submit', bd=0, cursor='hand2',
+                 activebackground='mediumpurple1', activeforeground='white',
+                 bg='mediumpurple1', fg="white", font=('Arial', 12, 'bold'), command=clearbook)
+refresh.grid(row=3, column=0, padx=8)
 
 adminmainWin.mainloop()

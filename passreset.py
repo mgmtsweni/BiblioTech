@@ -84,7 +84,7 @@ def sendEmail():
 adminWindow = Tk()
 adminWindow.geometry('1280x800+10+10')
 adminWindow.resizable(0, 0)
-adminWindow.title('admin Page')
+adminWindow.title('Recover Password')
 
 bgimage = PhotoImage(file='img/fp.png')
 

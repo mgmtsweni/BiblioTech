@@ -35,7 +35,7 @@ def order():
 
 def returns():
     adminmainWin.destroy()
-    import returns
+    import adreturn
 
 
 def userswin():
@@ -64,8 +64,9 @@ def displaybooks():
             + '\n'
         ) + '\n'
 
-    print_list = Label(booklist, text=show_record, font=('bold', 15), fg='mediumpurple1', bg='white')
-    print_list.grid(row=0, column=0, padx=8)
+    #print_list = Label(booklist, text=show_record, font=('bold', 15), fg='mediumpurple1', bg='white')
+    print_list_title = Label(booklist, text=show_record, font=('bold', 15), fg='mediumpurple1', bg='white')
+    print_list_title.grid(row=0, column=0, padx=8)
     connection.close()
 
 
@@ -73,7 +74,7 @@ def displaybooks():
 adminmainWin = Tk()
 adminmainWin.geometry('1280x800+10+10')
 adminmainWin.resizable(0, 'true')
-adminmainWin.title('admin Page')
+adminmainWin.title('Admin Page')
 
 
 bgimage = PhotoImage(file='img/available.png')

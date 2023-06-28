@@ -38,15 +38,16 @@ def search():
     import ussearch
 
 def order():
-    messagebox.showinfo('Success', 'oder books')
-
+    usermainWin.destroy()
+    import ussearch
 
 def more(event):
     if clicked.get() =='About':
         usermainWin.destroy()
         import more
-    else: 
-        messagebox.showinfo('Success', 'services')
+    else:
+        usermainWin.destroy()
+        import services
 
 def profile():
     usermainWin.destroy()
@@ -112,7 +113,7 @@ availableButton.place(x=490, y=85)
 #search
 searchButton = Button(usermainWin, text='Search', bd=0, cursor='hand2',
                       activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'))#, command = search)
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = search)
 searchButton.place(x=670, y=85)
 
 #order

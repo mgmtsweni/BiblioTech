@@ -28,7 +28,7 @@ def order():
 
 def returns():
     adminmainWin.destroy()
-    import returns
+    import adreturn
 
 def userswin():
     adminmainWin.destroy()
@@ -40,7 +40,7 @@ def searchbooks():
         messagebox.showerror('Error','Type something')
     else:
         availableframe = Frame(adminmainWin, width=650, height=540, bg='navajowhite3')
-        availableframe.place(x=50, y=300)
+        availableframe.place(x=420, y=300)
 
         scrollbar = Scrollbar(availableframe)
         scrollbar.grid(row=0, column=1, sticky='ns')
@@ -48,7 +48,6 @@ def searchbooks():
         booklist = Listbox(availableframe,  width=105, height=15, font=('Arial', 15, 'bold'), yscrollcommand=scrollbar.set)
         booklist.grid(row=0, column=0, padx=8)
         scrollbar.config(command=booklist.yview)
-        booklist.resizable(0, 0)
 
         try:
             connection = sqlite3.connect('database/Bibliotech.db')
@@ -59,20 +58,41 @@ def searchbooks():
     cursor.execute("SELECT rowid, * FROM booksdata WHERE title like ?", (lookup,))
     records = cursor.fetchall()
 
-    #put a control for when we can;t find what we searching for
-    show_record = ''
-    for record in records:
-        show_record += (
-            (
-                (f"{str(record[5])}  {str(record[0])}  {str(record[1])}")
-                + '\t'
-            )
-            + str(record[2]) +'\t'+ str(record[3]) + '\t' +str(record[4])
-            + '\n'
-        ) + '\n'
-
-    print_list = Label(booklist, text=show_record, font=('bold', 15), fg='mediumpurple1', bg='white')
-    print_list.grid(row=0, column=0, padx=8)
+    #put a control for when we can't find what we searching for
+    if records is None:
+        print_list = Label(booklist, text='no reord found', font=('bold', 15), fg='mediumpurple1', bg='white')
+        print_list.grid(row=0, column=0, padx=8)
+    else:
+        show_record = ''
+        for record in records:
+            show_record += (
+                (
+                    (f"{str(record[5])}  {str(record[0])}  {str(record[1])}")
+                    + '\t'
+                )
+                + str(record[2]) +'\t'+ str(record[3]) + '\t' + str(record[4])
+                + '\n'
+            ) + '\n'
+            show = {
+                "title":str(record[1]), 
+                "author":str(record[2]),
+                "year":str(record[3]),
+                "BookNo":str(record[4]),
+                "Price":str(record[5]),
+                "BookID":str(record[0])
+            }
+    print_list_title = Label(booklist, text=show['BookID'], font=('bold', 15), fg='mediumpurple1', bg='white')
+    print_list_title.grid(row=0, column=0, padx=8)
+    print_list_title = Label(booklist, text=show['title'], font=('bold', 15), fg='mediumpurple1', bg='white')
+    print_list_title.grid(row=0, column=1, padx=8)
+    print_list_title = Label(booklist, text=show['author'], font=('bold', 15), fg='mediumpurple1', bg='white')
+    print_list_title.grid(row=0, column=2, padx=8)
+    print_list_title = Label(booklist, text=show['year'], font=('bold', 15), fg='mediumpurple1', bg='white')
+    print_list_title.grid(row=0, column=3, padx=8)
+    print_list_title = Label(booklist, text=show['BookNo'], font=('bold', 15), fg='mediumpurple1', bg='white')
+    print_list_title.grid(row=0, column=4, padx=8)
+    print_list_title = Label(booklist, text=show['Price'], font=('bold', 15), fg='mediumpurple1', bg='white')
+    print_list_title.grid(row=0, column=5, padx=8)
 
     connection.close()
 
@@ -80,7 +100,7 @@ def searchbooks():
 adminmainWin = Tk()
 adminmainWin.geometry('1280x800+10+10')
 adminmainWin.resizable(0, 0)
-adminmainWin.title('admin Page')
+adminmainWin.title('Search')
 
 
 bgimage = PhotoImage(file='img/adsearch.png')

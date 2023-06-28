@@ -78,7 +78,7 @@ def database():
 adminWindow = Tk()
 adminWindow.geometry('1280x800+10+10')
 adminWindow.resizable(0, 0)
-adminWindow.title('admin Page')
+adminWindow.title('Admin Page')
 
 bgimage = PhotoImage(file='img/adreg.png')
 

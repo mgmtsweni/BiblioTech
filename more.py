@@ -33,7 +33,7 @@ def profile():
 usermainWin = Tk()
 usermainWin.geometry('1280x800+10+10')
 usermainWin.resizable(0, 0)
-usermainWin.title('admin Page')
+usermainWin.title('Admin Page')
 
 
 bgimage = PhotoImage(file='img/about.png')

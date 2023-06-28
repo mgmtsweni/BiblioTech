@@ -6,8 +6,6 @@ import re
 
 
 """functions"""
-
-
 def home():
     adminmainWin.destroy()
     import adhome
