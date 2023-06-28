@@ -6,8 +6,6 @@ import re
 
 
 """functions"""
-
-
 def home():
     usermainWin.destroy()
     import ushome

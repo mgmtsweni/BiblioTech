@@ -64,7 +64,6 @@ def displaybooks():
             + '\n'
         ) + '\n'
 
-    #print_list = Label(booklist, text=show_record, font=('bold', 15), fg='mediumpurple1', bg='white')
     print_list_title = Label(booklist, text=show_record, font=('bold', 15), fg='mediumpurple1', bg='white')
     print_list_title.grid(row=0, column=0, padx=8)
     connection.close()

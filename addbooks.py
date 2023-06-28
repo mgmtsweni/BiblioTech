@@ -83,10 +83,6 @@ def database():
 
     else: #Create a function to incriment if the book already exist
         messagebox.showerror('Error','Data already exist')
-    
-    cursor.execute('SELECT * FROM booksdata')
-    myDB = cursor.fetchall()
-    print(myDB)
 
     connection.commit()
     connection.close()

@@ -67,9 +67,6 @@ def database():
         messagebox.showinfo('Success','User Registered Successful')
     else:
         messagebox.showerror('Error','Data already exist')
-    cursor.execute('SELECT * FROM userdata')
-    myDB = cursor.fetchall()
-    print(myDB)
 
     connection.commit()
     connection.close()

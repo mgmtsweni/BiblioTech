@@ -6,9 +6,12 @@ import re
 
 
 """functions"""
+
+
 def login():
     adminWindow.destroy()
-    import ushome
+    import Userlogin
+
 
 def clear():
     passwordEntry.delete(0, END)
@@ -17,8 +20,9 @@ def clear():
 
 
 def edit():
+    uname = usernameEntry.get()
     if passwordEntry.get() == '' and confirmPassEntry.get() == '' or \
-        usernameEntry.get() == '' :
+            usernameEntry.get() == '':
         messagebox.showerror('error:', 'Fills can not be empty')
     elif passwordEntry.get() != confirmPassEntry.get():
         messagebox.showerror('error:', 'passwords do not match')
@@ -28,17 +32,24 @@ def edit():
             cursor = connection.cursor()
         except Exception:
             messagebox.showerror('Error', 'Database connection Error')
-
-        cursor.execute("""UPDATE userdata SET password = :password.
+        
+        cursor.execute('SELECT * FROM userdata WHERE username like ?', (uname,))
+        if records := cursor.fetchall():
+            cursor.execute("""UPDATE userdata SET password = :password
                             WHERE username = :username""",
-                       {
-                        'password': passwordEntry.get(),
-                        'username': usernameEntry.get()
-                       })
-        messagebox.showinfo('success', 'succefully updated')
+                           {
+                                'password': passwordEntry.get(),
+                                'username': usernameEntry.get()
+                           })
+            messagebox.showinfo('success', 'succefully updated')
+            login()
+        else:
+            messagebox.showerror('Error', 'Data does not exist')
+
         connection.commit()
         connection.close()
-        login()
+
+
 
 """oparations"""
 adminWindow = Tk()
@@ -54,11 +65,11 @@ bglabel = Label(adminWindow, image=bgimage)
 bglabel.place(x=0, y=0)
 
 logolabel = Label(adminWindow, image=logoimage, bd=0, cursor='hand2',
-                   width=500, height=55, activebackground='white')
+                  width=500, height=55, activebackground='white')
 logolabel.place(x=820, y=60)
 
 usernameEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
-                         font=('Microsoft Yahei UI Light', 13, 'bold'),)
+                      font=('Microsoft Yahei UI Light', 13, 'bold'),)
 usernameEntry.insert(0, '')
 usernameEntry.place(x=85, y=302)
 
@@ -74,8 +85,8 @@ confirmPassEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
 confirmPassEntry.insert(0, '')
 confirmPassEntry.place(x=85, y=528)
 
-
-SubmitButton = Button(adminWindow, text='SUBMIT', font=('Arial', 20, 'bold'),
+# Button
+SubmitButton = Button(adminWindow, text='Submit', font=('Arial', 20, 'bold'),
                       fg='white', cursor='hand2', bg='mediumpurple1', height=1, width=20,
                       activebackground='mediumpurple1', activeforeground='white', command=edit)
 SubmitButton.place(x=80, y=600)

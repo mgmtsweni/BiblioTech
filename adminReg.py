@@ -65,9 +65,6 @@ def database():
 
     else:
         messagebox.showerror('Error','Data already exist')
-    cursor.execute('SELECT * FROM admindata')
-    myDB = cursor.fetchall()
-    print(myDB)
 
     connection.commit()
     connection.close()
