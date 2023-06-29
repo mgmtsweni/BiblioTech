@@ -4,28 +4,6 @@ from tkinter import messagebox
 import sqlite3
 import re
 
-
-def displaybooks():
-    try:
-        connection = sqlite3.connect('database/Bibliotech.db')
-        cursor = connection.cursor()
-    except Exception:
-        messagebox.showerror('Error', 'Database connection Error')
-
-    cursor.execute('SELECT *, oid FROM booksdata')
-    records = cursor.fetchall()
-
-    show_record = ''
-    for record in records:
-        show_record += str(record[4]) + '\t' + str(record[0]) + '\t' \
-            + str(record[1]) + '\t' + str(record[2]) + '\n' + '\n'
-
-    print_list = Label(booklist, text=show_record, font=(
-        'bold', 15), fg='mediumpurple1', bg='white')
-    print_list.grid(row=0, column=0, padx=8)
-    connection.close()
-
-
 def home():
     usermainWin.destroy()
     import ushome

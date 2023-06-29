@@ -10,7 +10,7 @@ import re
 
 def index():
     adminWindow.destroy()
-    import ushome
+    import userReg
 
 
 def home():

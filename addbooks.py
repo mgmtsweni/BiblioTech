@@ -200,7 +200,7 @@ costEntry.place(x=330, y=630)
 
 
 # submite button
-submiteButton = Button(adminmainWin, text='Submit2', bd=0, cursor='hand2', height=1, width=8,
+submiteButton = Button(adminmainWin, text='Submit', bd=0, cursor='hand2', height=1, width=8,
                        activebackground='white', activeforeground='tomato',
                        bg='tomato', fg="white", font=('Arial', 25, 'bold underline'), command=database)
 submiteButton.place(x=998, y=599)
