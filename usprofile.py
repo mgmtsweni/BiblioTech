@@ -35,7 +35,6 @@ def check(email):
 
 
 def database():
-
     if nameEntry.get() == '' or userEmail.get() == '' or \
             usernameEntry.get() == '' or passwordEntry.get() == '' or confirmPassEntry.get() == '':
         messagebox.showerror('error:', 'all field are required')
@@ -86,61 +85,48 @@ bglabel = Label(adminWindow, image=bgimage)
 bglabel.place(x=0, y=0)
 
 # name entry
-namelabel = Label(adminWindow, text="Full Name", bg='brown1', bd=0, fg='white',
-                  font=('Arial', 13, 'bold'))
-namelabel.place(x=50, y=170)
-nameEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
-                  font=('Arial', 13, 'bold'),)
+nameEntry = Entry(adminWindow, width=30, bg='white', bd=0, fg='orange',
+                  font=('Arial', 15, 'bold'))
 nameEntry.insert(0, '')
-nameEntry.place(x=50, y=200)
+nameEntry.place(x=85, y=220)
 
 
 # username entry
-usernamelabel = Label(adminWindow, text="Enter Username",  bg='brown1', bd=0, fg='white',
-                      font=('Arial', 13, 'bold'))
-usernamelabel.place(x=50, y=262)
-usernameEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
-                      font=('Arial', 13, 'bold'),)
+usernameEntry = Entry(adminWindow, width=30, bg='white', bd=0, fg='orange',
+                      font=('Arial', 15, 'bold'))
 usernameEntry.insert(0, '')
-usernameEntry.place(x=50, y=292)
+usernameEntry.place(x=85, y=320)
 
 # email entry
-emaillabel = Label(adminWindow, text="Enter Email",  bg='brown1', bd=0, fg='white',
-                   font=('Arial', 13, 'bold'))
-emaillabel.place(x=50, y=358)
-userEmail = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
-                  font=('Arial', 13, 'bold'),)
+userEmail = Entry(adminWindow, width=30, bg='white', bd=0, fg='orange',
+                  font=('Arial', 15, 'bold'))
 userEmail.insert(0, '')
-userEmail.place(x=50, y=388)
+userEmail.place(x=85, y=420)
 
 
 # create password
-updatepasslabel = Label(adminWindow, text="Enter Password",  bg='brown1', bd=0, fg='white',
-                        font=('Arial', 13, 'bold'))
-updatepasslabel.place(x=50, y=450)
-passwordEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
-                      font=('Arial', 13, 'bold'),)
+
+passwordEntry = Entry(adminWindow, width=30, bg='white', bd=0, fg='orange',
+                      font=('Arial', 15, 'bold'))
 passwordEntry.insert(0, '')
-passwordEntry.place(x=50, y=480)
+passwordEntry.place(x=85, y=520)
 
 
 # confirm password
-confirmpasslabel = Label(adminWindow, text="Cornfim Password",  bg='brown1', bd=0, fg='white',
-                         font=('Arial', 13, 'bold'))
-confirmpasslabel.place(x=50, y=545)
-confirmPassEntry = Entry(adminWindow, width=34, bg='white', bd=0, fg='orange',
-                         font=('Arial', 13, 'bold'),)
+
+confirmPassEntry = Entry(adminWindow, width=30, bg='white', bd=0, fg='orange',
+                      font=('Arial', 15, 'bold'))
 confirmPassEntry.insert(0, '')
-confirmPassEntry.place(x=50, y=575)
+confirmPassEntry.place(x=85, y=620)
 
 
-SubmitButton = Button(adminWindow, text='submite', font=('Arial Sans', 20, 'bold'), fg='white', cursor='hand2',
-                      bg='brown1', height=1, width=15, activebackground='brown1', activeforeground='white', command=database)
-SubmitButton.place(x=80, y=665)
+SubmitButton = Button(adminWindow, text='submite', font=('Arial Sans', 13, 'bold'), fg='white', cursor='hand2',
+                      bg='brown1', height=1, width=10, bd=1, activebackground='brown1', activeforeground='white', command=database)
+SubmitButton.place(x=310, y=670)
 
 
 logoutButton = Button(adminWindow, text='logout', font=('Arial Sans', 10, 'bold'), fg='white', cursor='hand2',
-                      bg='brown1', height=1, width=15, activebackground='brown1', activeforeground='white', command=logout)
-logoutButton.place(x=1100, y=70)
+                      bg='mediumpurple1', height=1, width=10, activebackground='brown1', activeforeground='white', command=logout)
+logoutButton.place(x=1110, y=82)
 
 adminWindow.mainloop()
