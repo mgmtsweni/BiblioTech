@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import messagebox
 import sqlite3
 import re
-import BiblioBooksdb
+
 
 """functions"""
 
@@ -60,11 +60,13 @@ def displaybooks():
                 (f"{str(record[5])}  {str(record[0])}  {str(record[1])}")
                 + '\t'
             )
-            + str(record[2]) +'\t'+ str(record[3]) + '\t' +str(record[4])
+            + str(record[2]) + '\t' + str(record[3]) + '\t' + str(record[4])
             + '\n'
         ) + '\n'
 
-    print_list_title = Label(booklist, text=show_record, font=('bold', 15), fg='mediumpurple1', bg='white')
+    # print_list = Label(booklist, text=show_record, font=('bold', 15), fg='mediumpurple1', bg='white')
+    print_list_title = Label(booklist, text=show_record, font=(
+        'bold', 15), fg='mediumpurple1', bg='white')
     print_list_title.grid(row=0, column=0, padx=8)
     connection.close()
 
@@ -140,7 +142,8 @@ scrollbar = Scrollbar(availableframe)
 scrollbar.grid(row=0, column=1, sticky='ns')
 
 
-booklist = Listbox(availableframe,  width=52, height=22, font=('Arial', 15, 'bold'), yscrollcommand=scrollbar.set)
+booklist = Listbox(availableframe,  width=52, height=22, font=(
+    'Arial', 15, 'bold'), yscrollcommand=scrollbar.set)
 booklist.grid(row=0, column=0, padx=8)
 scrollbar.config(command=booklist.yview)
 

@@ -6,6 +6,8 @@ import re
 
 
 """functions"""
+
+
 def home():
     adminmainWin.destroy()
     import adhome
@@ -40,6 +42,7 @@ def userswin():
     adminmainWin.destroy()
     import users
 
+
 def userelist():
     listframe = Frame(userlist, width=1100, height=656, bg='thistle1')
     listframe.place(x=0, y=0)
@@ -59,8 +62,8 @@ def userelist():
     show_record = ''
     for record in records:
         show_record += ((
-                (f'{str(record[4])}    {str(record[0])}' + '\t')
-                + str(record[1]) + '\t' ) + str(record[2]) + '\n' ) + '\n'
+            (f'{str(record[4])}    {str(record[0])}' + '\t')
+            + str(record[1]) + '\t') + str(record[2]) + '\n') + '\n'
 
     print_list = Label(listframe, text=show_record, font=(
         'Arial Sans', 15, 'bold'), fg='White', bg='orange')
@@ -108,7 +111,7 @@ def userelist():
         global passwordEntry
         global confirmPassEntry
 
-        namelabel = Label(listframe, text='Full Name', 
+        namelabel = Label(listframe, text='Full Name',
                           bg='thistle1', font=('Arial Sans', 15))
         namelabel.place(x=36, y=95)
         nameEntry = Entry(listframe, font=('Arial Sans', 13, 'bold'),
@@ -123,7 +126,7 @@ def userelist():
         usernameEntry.place(x=36, y=205)
 
         emaillabel = Label(listframe, text='Email',
-                             bg='thistle1', font=('Arial Sans', 15))
+                           bg='thistle1', font=('Arial Sans', 15))
         emaillabel.place(x=36, y=240)
         userEmail = Entry(listframe, width=24, bg='white', bd=0, fg='orange',
                           font=('Arial Sans', 13, 'bold'),)
@@ -206,8 +209,8 @@ def employeelist():
     show_record = ''
     for record in records:
         show_record += ((
-                (f'{str(record[4])}    {str(record[0])}' + '\t')
-                + str(record[1]) + '\t' ) + str(record[2]) + '\n' ) + '\n'
+            (f'{str(record[4])}    {str(record[0])}' + '\t')
+            + str(record[1]) + '\t') + str(record[2]) + '\n') + '\n'
 
     print_list = Label(listframe, text=show_record, font=(
         'Arial Sans', 15, 'bold'), fg='black', bg='white')
@@ -255,7 +258,7 @@ def employeelist():
         global passwordEntry
         global confirmPassEntry
 
-        namelabel = Label(listframe, text='Full Name', 
+        namelabel = Label(listframe, text='Full Name',
                           bg='thistle1', font=('Arial Sans', 15))
         namelabel.place(x=36, y=95)
         nameEntry = Entry(listframe, font=('Arial Sans', 13, 'bold'),
@@ -270,7 +273,7 @@ def employeelist():
         usernameEntry.place(x=36, y=205)
 
         emaillabel = Label(listframe, text='Email',
-                             bg='thistle1', font=('Arial Sans', 15))
+                           bg='thistle1', font=('Arial Sans', 15))
         emaillabel.place(x=36, y=240)
         userEmail = Entry(listframe, width=24, bg='white', bd=0, fg='orange',
                           font=('Arial Sans', 13, 'bold'),)

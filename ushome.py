@@ -18,9 +18,10 @@ def displaybooks():
     show_record = ''
     for record in records:
         show_record += str(record[4]) + '\t' + str(record[0]) + '\t' \
-                    + str(record[1]) + '\t' + str(record[2]) + '\n' + '\n'
+            + str(record[1]) + '\t' + str(record[2]) + '\n' + '\n'
 
-    print_list = Label(booklist, text=show_record, font=('bold', 15), fg='mediumpurple1', bg='white')
+    print_list = Label(booklist, text=show_record, font=(
+        'bold', 15), fg='mediumpurple1', bg='white')
     print_list.grid(row=0, column=0, padx=8)
     connection.close()
 
@@ -29,25 +30,30 @@ def home():
     usermainWin.destroy()
     import ushome
 
+
 def available():
     usermainWin.destroy()
     import usavailable
+
 
 def search():
     usermainWin.destroy()
     import ussearch
 
+
 def order():
     usermainWin.destroy()
     import ussearch
 
+
 def more(event):
-    if clicked.get() =='About':
+    if clicked.get() == 'About':
         usermainWin.destroy()
         import more
     else:
         usermainWin.destroy()
         import services
+
 
 def profile():
     usermainWin.destroy()
@@ -61,7 +67,7 @@ def on_next():
     slideimg_4.configure(file='books/Pageboy.png')
     slideimg_5.configure(file='books/cross_down.png')
     slideimg_6.configure(file='books/The_Wager.png')
-    back.bind('<Button>', lambda e:on_back())
+    back.bind('<Button>', lambda e: on_back())
 
 
 def on_back():
@@ -71,7 +77,8 @@ def on_back():
     slideimg_4.configure(file='books/Pageboy.png')
     slideimg_2.configure(file='books/cross_down.png')
     slideimg_1.configure(file='books/The_Wager.png')
-    front.bind('<Button>', lambda e:on_next())
+    front.bind('<Button>', lambda e: on_next())
+
 
 """oparations"""
 usermainWin = Tk()
@@ -94,58 +101,58 @@ slideimg_5 = PhotoImage(file='books/Pageboy.png')
 slideimg_6 = PhotoImage(file='books/The_Wager.png')
 
 
-
-#background image
+# background image
 bglabel = Label(usermainWin, image=bgimage)
 bglabel.place(x=0, y=0)
 
-#logo image
+# logo image
 logolButton = Button(usermainWin, image=logoimage, bd=0, cursor='hand2',
-                   width=500, height=55, activebackground='white', command = home)
+                     width=500, height=55, activebackground='white', command=home)
 logolButton.place(x=10, y=75)
 
 
 availableButton = Button(usermainWin, text='Available', bd=0, cursor='hand2',
-                      activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command=available)
+                         activebackground='tomato', activeforeground='white',
+                         bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command=available)
 availableButton.place(x=490, y=85)
 
-#search
+# search
 searchButton = Button(usermainWin, text='Search', bd=0, cursor='hand2',
                       activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = search)
+                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command=search)
 searchButton.place(x=670, y=85)
 
-#order
+# order
 orderButton = Button(usermainWin, text='Order', bd=0, cursor='hand2',
-                      activebackground='tomato', activeforeground='white',
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command =order)
+                     activebackground='tomato', activeforeground='white',
+                     bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command=order)
 orderButton.place(x=820, y=85)
 
 
-#More - dropdown
+# More - dropdown
 clicked = StringVar()
 clicked.set("More")
-moreOption = OptionMenu(usermainWin, clicked, "About", "Services", command=more)
+moreOption = OptionMenu(usermainWin, clicked, "About",
+                        "Services", command=more)
 moreOption.place(x=980, y=85)
 
 
 profileButton = Button(usermainWin, image=usericon, bd=0, cursor='hand2',
-                      activebackground='tomato', activeforeground='white', width=70, height=70,
-                      bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command = profile)
+                       activebackground='tomato', activeforeground='white', width=70, height=70,
+                       bg='white', fg="mediumpurple1", font=('Arial', 15, 'bold underline'), command=profile)
 profileButton.place(x=1155, y=60)
 
 """slde show"""
 
 back = Button(usermainWin, image=backicon, bg='white', border=0,
-                activebackground='tomato', activeforeground='white', command=on_back)
+              activebackground='tomato', activeforeground='white', command=on_back)
 back.place(x=150, y=400)
-#back.bind('<Button>', lambda e:on_next())
+# back.bind('<Button>', lambda e:on_next())
 
 front = Button(usermainWin, image=fronticon, bg='white', border=0,
-                activebackground='tomato', activeforeground='white', command=on_next)
+               activebackground='tomato', activeforeground='white', command=on_next)
 front.place(x=1100, y=400)
-#front.bind('<Button>', lambda e:on_back())
+# front.bind('<Button>', lambda e:on_back())
 
 showframe = Frame(usermainWin, width=860, height=200, border=1, bg='white')
 showframe.place(x=220, y=350)

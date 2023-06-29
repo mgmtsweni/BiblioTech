@@ -6,13 +6,17 @@ import re
 
 
 """functions"""
+
+
 def index():
     adminWindow.destroy()
     import ushome
 
+
 def home():
     adminWindow.destroy()
     import landing
+
 
 def forgot():
     adminWindow.destroy()
@@ -67,12 +71,12 @@ bglabel = Label(adminWindow, image=bgimage)
 bglabel.place(x=0, y=0)
 
 logolButton = Button(adminWindow, image=logoimage, bd=0, cursor='hand2',
-                   width=48, height=48, activebackground='white', command = home)
+                     width=48, height=48, activebackground='white', command=home)
 logolButton.place(x=80, y=65)
 
 signUp = Button(adminWindow, text='Sign Up', bd=0, cursor='hand2', height=1, width=6, fg='white',
-               activebackground='tomato', activeforeground='white',
-               bg="mediumpurple1", font=('Arial', 15, 'bold'), command = index)
+                activebackground='tomato', activeforeground='white',
+                bg="mediumpurple1", font=('Arial', 15, 'bold'), command=index)
 signUp.place(x=430, y=185)
 
 # username entry
@@ -93,7 +97,7 @@ eyeButton = Button(adminWindow, image=openeye, bd=0, cursor='hand2',
 eyeButton.place(x=462, y=450)
 
 forgotButton = Button(adminWindow, text='Forgot Password?', bd=0, cursor='hand2',
-                      activebackground='tomato', activeforeground='white', command = forgot,
+                      activebackground='tomato', activeforeground='white', command=forgot,
                       bg='mediumpurple1', fg="white", font=('Arial', 10, 'bold underline'))
 forgotButton.place(x=348, y=538)
 

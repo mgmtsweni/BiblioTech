@@ -6,9 +6,12 @@ import re
 
 
 """functions"""
+
+
 def home():
     adminWindow.destroy()
     import adhome
+
 
 def land():
     adminWindow.destroy()
@@ -53,7 +56,7 @@ bglabel = Label(adminWindow, image=bgimage)
 bglabel.place(x=0, y=0)
 
 logolButton = Button(adminWindow, image=logoimage, bd=0, cursor='hand2',
-                   width=48, height=48, activebackground='white', command = land)
+                     width=48, height=48, activebackground='white', command=land)
 logolButton.place(x=80, y=65)
 
 # username entry

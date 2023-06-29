@@ -7,6 +7,8 @@ import re
 
 
 """functions"""
+
+
 def home():
     adminmainWin.destroy()
     import adhome
@@ -41,6 +43,7 @@ def userswin():
     adminmainWin.destroy()
     import users
 
+
 def clearbook():
     if selectBox.get() == '':
         messagebox.showerror('Error', 'Enter a value')
@@ -50,15 +53,17 @@ def clearbook():
             cursor = connection.cursor()
         except Exception:
             messagebox.showerror('Error', 'Database connection Error')
-    
+
         try:
-            cursor.execute(f"DELETE FROM bookorder WHERE booknumber= {selectBox.get()}")
+            cursor.execute(
+                f"DELETE FROM bookorder WHERE booknumber= {selectBox.get()}")
             selectBox.delete(0, END)
             messagebox.showinfo('Success', 'Checked out Successfully')
         except Exception:
             messagebox.showerror('Error', 'Database connection Error')
     connection.commit()
     connection.close()
+
 
 """oparations"""
 adminmainWin = Tk()

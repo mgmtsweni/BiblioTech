@@ -7,6 +7,7 @@ import re
 
 """functions"""
 
+
 def returns():
     try:
         connection = sqlite3.connect('database/Bibliotech.db')
@@ -15,7 +16,8 @@ def returns():
         messagebox.showerror('Error', 'Database connection Error')
 
     record_id = selectBox.get()
-    cursor.execute(f'SELECT * FROM booksdata WHERE Booknumber = {selectBox.get()}')
+    cursor.execute(
+        f'SELECT * FROM booksdata WHERE Booknumber = {selectBox.get()}')
     records = cursor.fetchall()
 
     for record in records:
@@ -128,7 +130,6 @@ adminsButton = Button(adminmainWin, text='users', bd=0, cursor='hand2',
 adminsButton.place(x=1130, y=60)
 
 
-
 """Return Table"""
 
 heading1 = Label(adminmainWin, text='Return Book Information',
@@ -137,34 +138,34 @@ heading1.place(x=80, y=175)
 
 # title entry
 titleEntry = Entry(adminmainWin, width=50, bg='white', bd=0, fg='orange',
-                  font=('Microsoft Yahei UI Light', 13, 'bold'),)
+                   font=('Microsoft Yahei UI Light', 13, 'bold'),)
 titleEntry.insert(0, '')
 titleEntry.place(x=330, y=324)
 
 
-#Author entry
+# Author entry
 authorEntry = Entry(adminmainWin, width=50, bg='white', bd=0, fg='orange',
-                     font=('Microsoft Yahei UI Light', 13, 'bold'),)
+                    font=('Microsoft Yahei UI Light', 13, 'bold'),)
 authorEntry.insert(0, '')
 authorEntry.place(x=330, y=399)
 
 
 # year entry
 yearEntry = Entry(adminmainWin, width=50, bg='white', bd=0, fg='orange',
-                      font=('Microsoft Yahei UI Light', 13, 'bold'),)
+                  font=('Microsoft Yahei UI Light', 13, 'bold'),)
 yearEntry.insert(0, '')
 yearEntry.place(x=330, y=478)
 
 # book number entry
 bookEntry = Entry(adminmainWin, width=50, bg='white', bd=0, fg='orange',
-                      font=('Microsoft Yahei UI Light', 13, 'bold'),)
+                  font=('Microsoft Yahei UI Light', 13, 'bold'),)
 bookEntry.insert(0, '')
 bookEntry.place(x=330, y=553)
 
 # submite button
 submiteButton = Button(adminmainWin, text='Submit', bd=0, cursor='hand2', height=1, width=8,
-                      activebackground='white', activeforeground='tomato',
-                      bg='tomato', fg="white", font=('Arial', 25, 'bold underline'), command = returns)
+                       activebackground='white', activeforeground='tomato',
+                       bg='tomato', fg="white", font=('Arial', 25, 'bold underline'), command=returns)
 submiteButton.place(x=998, y=599)
 
 

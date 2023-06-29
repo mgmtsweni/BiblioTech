@@ -6,17 +6,22 @@ import re
 
 
 """functions"""
+
+
 def home():
     usermainWin.destroy()
     import ushome
+
 
 def available():
     usermainWin.destroy()
     import usavailable
 
+
 def search():
     usermainWin.destroy()
     import ussearch
+
 
 def more(event):
     if clicked.get() == 'About':
@@ -30,6 +35,7 @@ def more(event):
 def profile():
     usermainWin.destroy()
     import usprofile
+
 
 def searchbooks():
     lookup = searchEntry.get()
@@ -54,32 +60,24 @@ def searchbooks():
         scrollbar.grid(row=0, column=1, sticky='ns')
 
         booklist = Listbox(availableframe,  width=105, height=15, font=(
-                'Arial', 15, 'bold'), yscrollcommand=scrollbar.set)
+            'Arial', 15, 'bold'), yscrollcommand=scrollbar.set)
         booklist.grid(row=0, column=0, padx=8)
         scrollbar.config(command=booklist.yview)
 
         text = Label(availableframe, text='Enter Book ID', fg='mediumpurple1',
-                        bg='white', font=('Arial', 12, 'bold'))
+                     bg='white', font=('Arial', 12, 'bold'))
         text.grid(row=1, column=0, sticky='ns')
 
         selectBox = Entry(availableframe, width=25, bd=2, fg='black')
         selectBox.grid(row=2, column=0, sticky='ns')
 
         submit = Button(availableframe, text='Submit', bd=0, cursor='hand2',
-                            activebackground='mediumpurple1', activeforeground='white',
-                            bg='mediumpurple1', fg="white", font=('Arial', 12, 'bold'), command=lambda: bookorder())
+                        activebackground='mediumpurple1', activeforeground='white',
+                        bg='mediumpurple1', fg="white", font=('Arial', 12, 'bold'), command=lambda: bookorder())
         submit.grid(row=3, column=0, sticky='ns')
 
         show_record = ''
         for record in records:
-            show_record += (
-                (
-                    (f"{str(record[5])}  {str(record[0])}  {str(record[1])}")
-                    + '\t'
-                )
-                + str(record[2]) +'\t'+ str(record[3]) + '\t' + str(record[4])
-                + '\n'
-            ) + '\n'
             show = {
                 "title": str(record[1]),
                 "author": str(record[2]),
@@ -107,8 +105,8 @@ def searchbooks():
                 'bold', 15), fg='mediumpurple1', bg='white')
             print_list_title.grid(row=0, column=5, padx=8)
     else:
-        messagebox.showinfo('unsuccessful','Book not found')
-    
+        messagebox.showinfo('unsuccessful', 'Book not found')
+
     def bookorder():
         if selectBox.get() == '':
             messagebox.showerror('Error', 'Enter a value')
@@ -136,11 +134,10 @@ def searchbooks():
                 messagebox.showinfo('Success', 'Request Successful')
             except Exception:
                 messagebox.showerror('Error', 'Database connection Error')
-        
+
         selectBox.delete(0, END)
         connection.commit()
         connection.close()
-
 
 
 """oparations"""
@@ -181,8 +178,8 @@ searchButton.place(x=670, y=85)
 
 # Order
 orderButton = Label(usermainWin, text='Order Here', bd=0, bg='white',
-                     activebackground='tomato', activeforeground='white',
-                     fg="mediumpurple1", font=('Arial', 15, 'bold underline'))
+                    activebackground='tomato', activeforeground='white',
+                    fg="mediumpurple1", font=('Arial', 15, 'bold underline'))
 orderButton.place(x=820, y=85)
 
 

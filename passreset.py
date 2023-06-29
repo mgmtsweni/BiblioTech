@@ -6,6 +6,7 @@ import re
 import smtplib
 from main_cred import cred
 
+
 """functions"""
 """start_server()
         send_mail(
@@ -30,8 +31,20 @@ def signUp():
 def clear():
     userEmail.delete(0, END)
 
+# regular expression for validating an Email
+
+
 def check(email):
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+    # and the string into the fullmatch() method
+    return 1 if (re.fullmatch(regex, email)) else 0
+
+# regular expression for validating an Email
+
+
+def check(email):
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+    # and the string into the fullmatch() method
     return 1 if (re.fullmatch(regex, email)) else 0
 
 
@@ -41,12 +54,12 @@ def sendEmail():
     subject = "Testing this feature",
     message = "Greatings to your first email",
     email_receiver = userEmail.get()
-    
+
     if email_receiver == '':
         messagebox.showerror('Error', 'Enter an email')
     elif check(email_receiver) == 0:
         messagebox.showerror('error:', 'Enter a correct email')
-   
+    # establish connection
     else:
         try:
             server = smtplib.SMTP("smtp.gmail.com", 587)

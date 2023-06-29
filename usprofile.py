@@ -17,14 +17,17 @@ def clear():
     passwordEntry.delete(0, END)
     confirmPassEntry.delete(0, END)
 
+
 def logout():
     adminWindow.destroy()
+
 
 def index():
     adminWindow.destroy()
     import Userlogin
 
 
+# regular expression for validating an Email
 def check(email):
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
     # and the string into the fullmatch() method
@@ -46,7 +49,6 @@ def database():
             cursor = connection.cursor()
         except Exception:
             messagebox.showerror('Error', 'Database connection Error')
-
 
         cursor.execute("""UPDATE userdata SET
                             name = :name,

@@ -7,6 +7,7 @@ import re
 
 """functions"""
 
+
 def home():
     adminmainWin.destroy()
     import adhome
@@ -54,19 +55,19 @@ proicon = PhotoImage(file='icon/proIcon.png')
 logoimage = PhotoImage(file='icon/2.png')
 
 
-#background image
+# background image
 bglabel = Label(adminmainWin, image=bgimage)
 bglabel.place(x=0, y=0)
 
 
 logolButton = Button(adminmainWin, image=logoimage, bd=0, cursor='hand2',
-                   width=210, height=47, activebackground='white', command = home)
+                     width=210, height=47, activebackground='white', command=home)
 logolButton.place(x=35, y=55)
 
 """ Header Tab"""
 availableButton = Button(adminmainWin, text='Available', bd=0, cursor='hand2',
-                      activebackground='tomato', activeforeground='white',
-                      bg='white', fg="black", font=('Arial', 15, 'bold underline'), command=available)
+                         activebackground='tomato', activeforeground='white',
+                         bg='white', fg="black", font=('Arial', 15, 'bold underline'), command=available)
 availableButton.place(x=280, y=60)
 
 
